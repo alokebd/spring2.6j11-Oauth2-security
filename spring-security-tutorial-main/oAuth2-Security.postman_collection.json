@@ -1,0 +1,169 @@
+{
+	"info": {
+		"_postman_id": "5912df82-0f4f-461d-aafd-0590f72309e9",
+		"name": "oAuth2-Security",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "33936986"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\":\"June\",\n    \"lastName\":\"Lee\",\n    \"email\": \"june@gmail.com\",\n    \"password\":\"Pwd1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/register",
+				"description": "To create token"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/resendVerifyToken?token=106b6a1d-9e50-4831-a5d1-ea3f2c0ed7a4",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJBbG9rZSIsImlhdCI6MTcxMTk5OTMzNywiZXhwIjoxNzEyMDAxMTM3fQ.T7XMkH5uXsByn6clVq-Nzs6cxs2DTqKoMKc94ponwYU"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/resendVerifyToken?token=106b6a1d-9e50-4831-a5d1-ea3f2c0ed7a4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"resendVerifyToken"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "106b6a1d-9e50-4831-a5d1-ea3f2c0ed7a4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/resetPassword",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n\"email\":\"june@gmail.com\",\r\n\"oldPassword\":\"Pwd1\",\r\n\"newPassword\":\"Pwd1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/resetPassword"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/savePassword?token=afe114ea-dda0-48c7-8625-6123fac0a985",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n\"email\":\"alokebd@gmail.com\",\r\n\"oldPassword\":\"Pwd1\",\r\n\"newPasswordl\":\"Pwd1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/savePassword?token=afe114ea-dda0-48c7-8625-6123fac0a985",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"savePassword"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "afe114ea-dda0-48c7-8625-6123fac0a985"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/changePassword",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n\"email\":\"june@gmail.com\",\r\n\"oldPassword\":\"Pwd1\",\r\n\"newPassword\":\"Pwd1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/changePassword"
+			},
+			"response": []
+		}
+	]
+}
